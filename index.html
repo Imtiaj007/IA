@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imtiaj Ahmed | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00d4ff;
+            --bg-color: #0b0e14;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-color: #ffffff;
+            --transition: 0.3s ease;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f4f7f6;
+            --card-bg: rgba(0, 0, 0, 0.05);
+            --text-color: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-color);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; }
+
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; font-size: 0.9rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        .theme-toggle { cursor: pointer; font-size: 1.3rem; color: var(--primary-color); transition: 0.3s; }
+        .theme-toggle:hover { transform: rotate(20deg); }
+
+        /* Hero Section */
+        section { padding: 100px 10%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+
+        #home { align-items: center; text-align: center; }
+        .profile-img {
+            width: 220px; height: 220px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border: 5px solid var(--primary-color); margin-bottom: 25px;
+            object-fit: cover; box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .typewriter { color: var(--primary-color); font-weight: 600; font-size: 1.2rem; min-height: 1.5em; }
+
+        /* Grid System */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        
+        .card {
+            background: var(--card-bg); padding: 35px; border-radius: 20px;
+            backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card:hover { transform: translateY(-12px); border-color: var(--primary-color); background: rgba(0, 212, 255, 0.03); }
+
+        h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; position: relative; }
+        h2::after { content: ''; width: 60px; height: 4px; background: var(--primary-color); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
+
+        /* Buttons & Icons */
+        .social-links { margin-top: 25px; display: flex; gap: 25px; justify-content: center; }
+        .social-links a { font-size: 1.6rem; color: var(--text-color); transition: 0.3s; }
+        .social-links a:hover { color: var(--primary-color); transform: scale(1.2); }
+
+        .btn {
+            display: inline-block; padding: 14px 35px; background: var(--primary-color);
+            color: #000; text-decoration: none; border-radius: 50px;
+            font-weight: 700; margin-top: 30px; border: none; cursor: pointer; transition: 0.3s;
+        }
+        .btn:hover { box-shadow: 0 10px 20px rgba(0, 212, 255, 0.4); transform: translateY(-3px); }
+
+        footer { text-align: center; padding: 50px; opacity: 0.6; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Imtiaj.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+        <div class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></div>
+    </nav>
+
+    <section id="home">
+        <img src="https://lh3.googleusercontent.com/d/13BwaCC-GRBIpul4pRcKBIpyLXNo2IVlR" alt="Imtiaj Ahmed" class="profile-img">
+        <h1>Imtiaj Ahmed</h1>
+        <div class="typewriter" id="typewriter"></div>
+        
+        <div class="social-links">
+            <a href="https://www.facebook.com/imtiajahmed007" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.github.com/imtiaj007" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/imtiajahmed007" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+        
+        <a href="https://drive.google.com/file/d/1z16Y7XY9GD3doOA4WMEUNBRiwfzDm3bM/view?usp=sharing" class="btn" target="_blank">Download CV</a>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="card" style="max-width: 900px; margin: 0 auto;">
+            <p>I am a Computer Science and Engineering undergraduate with a strong interest in web development, software engineering, and problem solving. I actively solve programming problems and participate in coding contests using C, C++, and Java. Alongside my technical journey, I am an instructor and entrepreneur who enjoys teaching, building real-world projects, and turning ideas into impactful solutions.</p>
+            <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+                <span style="background: var(--primary-color); color: #000; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">Gaming 🎮</span>
+                <span style="background: var(--primary-color); color: #000; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">Sports ⚽</span>
+                <span style="background: var(--primary-color); color: #000; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">Coding 💻</span>
+                <span style="background: var(--primary-color); color: #000; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">Photography 📷</span>
+                <span style="background: var(--primary-color); color: #000; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">Cycling 🚲</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-university" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                <h3>BSc in CSE</h3>
+                <p>Southeast University</p>
+                <p>7th Semester | <strong>CGPA: 3.58</strong></p>
+            </div>
+            <div class="card">
+                <i class="fas fa-school" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                <h3>HSC (Science)</h3>
+                <p>Government Yasin College</p>
+                <p>GPA: <strong>4.68</strong></p>
+            </div>
+            <div class="card">
+                <i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                <h3>SSC (Science)</h3>
+                <p>Rajbari Government High School</p>
+                <p>GPA: <strong>4.73</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+            <div class="card" style="padding: 20px;"><h3>C / C++</h3></div>
+            <div class="card" style="padding: 20px;"><h3>Java / JavaFX</h3></div>
+            <div class="card" style="padding: 20px;"><h3>Python</h3></div>
+            <div class="card" style="padding: 20px;"><h3>HTML & CSS</h3></div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-wallet" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                <h3>Expense Tracker</h3>
+                <p>Managing daily finances with ease.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-pills" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                <h3>Pharmacy Management</h3>
+                <p>System for inventory and billing.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-calendar-alt" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                <h3>Course Time Generator</h3>
+                <p>Automatic scheduling without conflicts.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-car" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                <h3>Car Simulator Control</h3>
+                <p>Automatic control system logic.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Imtiaj Ahmed | All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Typing Effect Logic
+        const text = "CSE Undergraduate | Web Developer | Entrepreneur | Competitive Programmer | Instructor";
+        let index = 0;
+        function type() {
+            if (index < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, 50);
+            }
+        }
+        window.onload = type;
+
+        // Theme Toggle Logic
+        const themeBtn = document.getElementById('theme-btn');
+        const body = document.body;
+        const icon = themeBtn.querySelector('i');
+
+        themeBtn.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'light') {
+                body.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.className = 'fas fa-sun';
+            }
+        });
+    </script>
+</body>
+</html>
