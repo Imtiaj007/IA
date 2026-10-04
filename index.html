@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Emtiuj Ahmed Ahmed // Cyber Command Center & Photography</title>
+    <title>Md. Emtiuj Ahmed // Cyber Command Center & Photography</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -88,27 +88,43 @@
     <!-- Scanline Grid -->
     <div class="fixed top-0 left-0 w-full h-full scanlines -z-10 pointer-events-none"></div>
 
-    <!-- HUD Header Bar -->
-    <header class="fixed top-0 w-full bg-cyberBg/90 backdrop-blur-md border-b border-cyberBorder z-50 px-6 py-3">
+    <!-- HUD Header Bar with Mobile Responsive Menu -->
+    <header class="fixed top-0 w-full bg-cyberBg/95 backdrop-blur-md border-b border-cyberBorder z-50 px-4 md:px-6 py-3">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2">
                 <span class="inline-block w-2.5 h-2.5 bg-cyberGreen rounded-full animate-ping"></span>
-                <span class="text-cyberGreen font-bold text-lg text-glow-green">[EMTIUJ_SEC_OS v3.8]</span>
+                <span class="text-cyberGreen font-bold text-base md:text-lg text-glow-green">[EMTIUJ_SEC_OS v3.8]</span>
             </div>
             
+            <!-- Desktop Navigation Links -->
             <nav class="hidden md:flex space-x-6 text-sm tracking-wider">
                 <button onclick="switchTab('profile')" class="hover:text-cyberGreen transition-colors text-cyberCyan">// 01_PROFILE</button>
                 <button onclick="switchTab('skills')" class="hover:text-cyberGreen transition-colors text-cyberCyan">// 02_ARSENAL</button>
                 <button onclick="switchTab('projects')" class="hover:text-cyberGreen transition-colors text-cyberCyan">// 03_PROJECTS</button>
                 <button onclick="switchTab('achievements')" class="hover:text-cyberGreen transition-colors text-cyberCyan">// 04_RECORDS</button>
-                <!-- Direct Link to Real Photography Site -->
                 <a href="https://imtiaj007.github.io/photography/" target="_blank" class="hover:text-cyberGreen transition-colors text-cyberCyan font-bold">// 05_GALLERY ↗</a>
                 <button onclick="switchTab('comms')" class="hover:text-cyberGreen transition-colors text-cyberCyan">// 06_COMMS</button>
             </nav>
 
-            <div class="text-xs text-cyberGreen border border-cyberGreen/40 px-2 py-1 rounded bg-cyberGreen/10">
-                STATUS: ONLINE
+            <div class="flex items-center space-x-3">
+                <div class="text-xs text-cyberGreen border border-cyberGreen/40 px-2 py-1 rounded bg-cyberGreen/10 hidden sm:block">
+                    STATUS: ONLINE
+                </div>
+                <!-- Mobile Hamburger Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-cyberGreen text-xl border border-cyberGreen/50 px-2.5 py-1 rounded bg-black/50 focus:outline-none">
+                    <i class="fa-solid fa-bars" id="menuIcon"></i>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Nav Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-cyberBorder/80 bg-cyberPanel mt-3 pt-3 pb-2 px-2 flex flex-col space-y-2 text-sm tracking-wider">
+            <button onclick="switchTabMobile('profile')" class="text-left px-3 py-2 text-cyberCyan hover:text-cyberGreen hover:bg-black/40 rounded transition-all">// 01_PROFILE</button>
+            <button onclick="switchTabMobile('skills')" class="text-left px-3 py-2 text-cyberCyan hover:text-cyberGreen hover:bg-black/40 rounded transition-all">// 02_ARSENAL</button>
+            <button onclick="switchTabMobile('projects')" class="text-left px-3 py-2 text-cyberCyan hover:text-cyberGreen hover:bg-black/40 rounded transition-all">// 03_PROJECTS</button>
+            <button onclick="switchTabMobile('achievements')" class="text-left px-3 py-2 text-cyberCyan hover:text-cyberGreen hover:bg-black/40 rounded transition-all">// 04_RECORDS</button>
+            <a href="https://imtiaj007.github.io/photography/" target="_blank" class="text-left px-3 py-2 text-cyberGreen font-bold hover:bg-black/40 rounded transition-all">// 05_GALLERY ↗</a>
+            <button onclick="switchTabMobile('comms')" class="text-left px-3 py-2 text-cyberCyan hover:text-cyberGreen hover:bg-black/40 rounded transition-all">// 06_COMMS</button>
         </div>
     </header>
 
@@ -265,19 +281,31 @@
                 </div>
             </div>
 
-            <!-- TAB 4: Achievements & Certificate -->
+            <!-- TAB 4: Achievements & Certificates with IMG Showcase -->
             <div id="tab-achievements" class="tab-content hidden space-y-6">
                 <h2 class="text-xl font-bold text-cyberGreen flex items-center">
                     <i class="fa-solid fa-trophy mr-3 text-yellow-400"></i> HONORS & CERTIFICATIONS
                 </h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Mile2 Certificate Card -->
+                    
+                    <!-- Mile2 Certificate Card with IMG Preview -->
                     <div class="bg-cyberPanel border-2 border-cyberGreen p-6 rounded-lg neon-glow-green space-y-4">
                         <div class="flex justify-between items-start">
                             <span class="text-xs text-cyberGreen font-bold border border-cyberGreen px-2 py-0.5 rounded">MILE2 CERTIFIED</span>
                             <span class="text-xs text-gray-400">Valid: 2026 – 2029</span>
                         </div>
+                        
+                        <!-- Certificate Image Container -->
+                        <div class="relative overflow-hidden rounded-md border border-cyberGreen/30 bg-black group cursor-pointer" onclick="openImageModal('mile2-cert-img', 'Mile2 C)PTE Certificate')">
+                            <img id="mile2-cert-img" src="https://raw.githubusercontent.com/Imtiaj007/IA/main/assets/mile2-cpte.jpg" onerror="this.src='https://via.placeholder.com/600x400/0a101e/00ff66?text=Mile2+C)PTE+Certificate+Image'" alt="Mile2 C)PTE Certificate" class="w-full h-48 object-cover group-hover:scale-105 transition-all duration-300 opacity-90 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-cyberBg/40 group-hover:bg-transparent transition-all flex items-center justify-center">
+                                <span class="bg-black/80 text-cyberGreen text-xs px-3 py-1.5 rounded border border-cyberGreen flex items-center space-x-1">
+                                    <i class="fa-solid fa-expand"></i> <span>Click to View Certificate IMG</span>
+                                </span>
+                            </div>
+                        </div>
+
                         <div>
                             <h3 class="text-xl font-bold text-white">Mile2 C)PTE: Certified Penetration Testing Engineer</h3>
                             <p class="text-xs text-cyberCyan mt-1">Certificate ID: <span class="font-bold text-white tracking-widest">30030-178-102-1823</span></p>
@@ -293,32 +321,49 @@
                         </div>
                     </div>
 
+                    <!-- Math Olympiad Award with IMG Preview -->
+                    <div class="bg-cyberPanel border border-yellow-400/50 p-6 rounded-lg space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs text-yellow-400 font-bold border border-yellow-400/50 px-2 py-0.5 rounded">EVENT AWARD</span>
+                            <i class="fa-solid fa-award text-yellow-400 text-xl"></i>
+                        </div>
+
+                        <!-- Award Image Container -->
+                        <div class="relative overflow-hidden rounded-md border border-yellow-400/30 bg-black group cursor-pointer" onclick="openImageModal('math-award-img', 'Best Event Management Award 2022')">
+                            <img id="math-award-img" src="https://raw.githubusercontent.com/Imtiaj007/IA/main/assets/math-olympiad-award.jpg" onerror="this.src='https://via.placeholder.com/600x400/0a101e/ffe600?text=Math+Olympiad+Award+Image'" alt="Math Olympiad Award" class="w-full h-48 object-cover group-hover:scale-105 transition-all duration-300 opacity-90 group-hover:opacity-100">
+                            <div class="absolute inset-0 bg-cyberBg/40 group-hover:bg-transparent transition-all flex items-center justify-center">
+                                <span class="bg-black/80 text-yellow-400 text-xs px-3 py-1.5 rounded border border-yellow-400 flex items-center space-x-1">
+                                    <i class="fa-solid fa-expand"></i> <span>Click to View Award IMG</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Best Event Management Award (2022)</h3>
+                            <p class="text-xs text-gray-400 mt-1">Bangladesh Math Olympiad Committee</p>
+                        </div>
+                        <p class="text-xs text-gray-400">Recognized for outstanding management, logistics, and event coordination during the Bangladesh Math Olympiad national events.</p>
+                    </div>
+
                     <!-- Photography Exhibition Card -->
-                    <div class="bg-cyberPanel border-2 border-cyberCyan p-6 rounded-lg neon-glow-cyan space-y-4">
+                    <div class="bg-cyberPanel border border-cyberCyan/50 p-6 rounded-lg space-y-3">
                         <div class="flex justify-between items-start">
                             <span class="text-xs text-cyberCyan font-bold border border-cyberCyan px-2 py-0.5 rounded">VISUAL ARTS</span>
                             <i class="fa-solid fa-camera text-cyberCyan text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-white">Photography Portfolio Site</h3>
-                            <p class="text-xs text-gray-400 mt-1">Daffodil & NSU Photography Challenge Exhibitor (2023)</p>
+                            <h3 class="text-lg font-bold text-white">Daffodil & NSU Photography Challenge (2023)</h3>
+                            <p class="text-xs text-cyberCyan mt-1">Exhibition Participant & Feature</p>
                         </div>
                         <p class="text-xs text-gray-300 leading-relaxed">
-                            Visual storytelling through street photography, portraits, and creative perspectives.
+                            Visual storytelling through street photography, portraits, and creative perspectives exhibited across inter-university national challenges.
                         </p>
                         <div class="pt-2">
-                            <a href="https://imtiaj007.github.io/photography/" target="_blank" class="inline-flex items-center space-x-2 bg-cyberCyan text-black font-bold px-5 py-2.5 rounded hover:bg-white transition-all text-xs uppercase">
+                            <a href="https://imtiaj007.github.io/photography/" target="_blank" class="inline-flex items-center space-x-2 bg-cyberCyan text-black font-bold px-4 py-2 rounded hover:bg-white transition-all text-xs uppercase">
                                 <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
                                 <span>[ Open Photography Site ↗ ]</span>
                             </a>
                         </div>
-                    </div>
-
-                    <!-- Math Olympiad Award -->
-                    <div class="bg-cyberPanel border border-yellow-400/50 p-6 rounded-lg space-y-3">
-                        <div class="text-xs text-yellow-400 font-bold">EVENT MANAGEMENT AWARD</div>
-                        <h3 class="text-lg font-bold text-white">Best Event Management Award (2022)</h3>
-                        <p class="text-xs text-gray-400">Recognized by Bangladesh Math Olympiad committee for outstanding management and event coordination.</p>
                     </div>
 
                     <!-- DU ICE Competition -->
@@ -327,6 +372,7 @@
                         <h3 class="text-lg font-bold text-white">DU ICE Center Idea Competition 2026</h3>
                         <p class="text-xs text-gray-400">Submitted startup technology service proposal for Batch 01 at the University of Dhaka ICE Center.</p>
                     </div>
+
                 </div>
             </div>
 
@@ -364,6 +410,17 @@
 
     </main>
 
+    <!-- CERTIFICATE / AWARD FULLSCREEN IMAGE MODAL -->
+    <div id="imageModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex flex-col items-center justify-center p-4" onclick="closeImageModal()">
+        <div class="relative max-w-4xl w-full bg-cyberPanel border-2 border-cyberGreen rounded-lg overflow-hidden p-2" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center px-4 py-2 border-b border-cyberBorder mb-2">
+                <span id="modalTitle" class="text-cyberGreen text-sm font-bold">Certificate Preview</span>
+                <button onclick="closeImageModal()" class="text-cyberRed hover:text-white font-bold text-lg">✕</button>
+            </div>
+            <img id="modalImg" src="" alt="Full View" class="w-full max-h-[75vh] object-contain rounded">
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script>
         const canvas = document.getElementById('matrixCanvas');
@@ -400,9 +457,38 @@
         }
         setInterval(drawMatrix, 35);
 
+        // Mobile Menu Toggle Functions
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars';
+            } else {
+                icon.className = 'fa-solid fa-xmark';
+            }
+        }
+
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
             document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+        }
+
+        function switchTabMobile(tabName) {
+            switchTab(tabName);
+            toggleMobileMenu(); // Auto close mobile drawer after selection
+        }
+
+        // Image Fullscreen Modal Functionality
+        function openImageModal(imgElementId, titleText) {
+            const imgSrc = document.getElementById(imgElementId).src;
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalTitle').textContent = titleText;
+            document.getElementById('imageModal').classList.remove('hidden');
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.add('hidden');
         }
 
         const phrases = [
