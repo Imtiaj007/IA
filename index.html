@@ -1,288 +1,496 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imtiaj Ahmed | Portfolio</title>
+    <title>Md. Emtiuj Ahmed Ahmed // Cyber Command Center & Photography</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #00d4ff;
-            --bg-color: #0b0e14;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-color: #ffffff;
-            --transition: 0.3s ease;
-            /* Brand Colors */
-            --facebook-color: #1877F2;
-            --github-color: #f0f6fc;
-            --linkedin-color: #0A66C2;
-        }
-
-        [data-theme="light"] {
-            --bg-color: #f4f7f6;
-            --card-bg: rgba(0, 0, 0, 0.05);
-            --text-color: #1a1a1a;
-            --github-color: #1a1a1a;
-        }
-
-        * {
-            margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Poppins', sans-serif; scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: var(--transition);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 1rem 8%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: var(--bg-color); z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
-        }
-
-        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 2px; }
-        .nav-links { display: flex; list-style: none; gap: 25px; }
-        .nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; font-size: 0.9rem; transition: var(--transition); }
-        .nav-links a:hover { color: var(--primary-color); }
-        .theme-toggle { cursor: pointer; font-size: 1.3rem; color: var(--primary-color); }
-
-        /* Global Layout */
-        section { padding: 60px 10%; max-width: 1200px; margin: 0 auto; }
-
-        #home { text-align: center; padding-top: 130px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;}
-        
-        .profile-img {
-            width: 200px; height: 200px; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            border: 5px solid var(--primary-color); margin-bottom: 25px;
-            object-fit: cover; box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
-            animation: morph 8s ease-in-out infinite;
-        }
-
-        @keyframes morph {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-        }
-
-        h1 { font-size: 3rem; margin-bottom: 10px; }
-        .typewriter { color: var(--primary-color); font-weight: 600; font-size: 1.1rem; min-height: 1.5em; }
-
-        /* Social Icons - Restored Colors */
-        .social-links { margin-top: 25px; display: flex; gap: 25px; justify-content: center; }
-        .social-links a { font-size: 1.8rem; transition: 0.3s; }
-        .fa-facebook { color: var(--facebook-color); }
-        .fa-github { color: var(--github-color); }
-        .fa-linkedin { color: var(--linkedin-color); }
-        .social-links a:hover { transform: translateY(-5px) scale(1.1); filter: brightness(1.2); }
-
-        /* Grid & Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 30px; }
-        .card {
-            background: var(--card-bg); padding: 30px; border-radius: 15px;
-            backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.4s ease; text-align: center;
-            display: flex; flex-direction: column; justify-content: space-between;
-        }
-        .card:hover { transform: translateY(-8px); border-color: var(--primary-color); }
-
-        /* Project Specific Styles */
-        .project-links { margin-top: 20px; display: flex; justify-content: center; gap: 15px; }
-        .github-link {
-            color: var(--text-color); font-size: 1.4rem; transition: 0.3s;
-            background: rgba(255,255,255,0.1); width: 45px; height: 45px;
-            display: flex; align-items: center; justify-content: center; border-radius: 50%;
-        }
-        .github-link:hover { background: var(--primary-color); color: #000; }
-
-        h2 { font-size: 2.2rem; margin-bottom: 40px; text-align: center; position: relative; }
-        h2::after { content: ''; width: 50px; height: 3px; background: var(--primary-color); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
-
-        /* Photography Button */
-        .photo-btn-container { text-align: center; margin-top: 30px; }
-        .photo-btn {
-            display: inline-block; background: transparent; border: 2px solid var(--primary-color);
-            color: var(--primary-color); padding: 10px 25px; border-radius: 50px;
-            font-weight: 600; text-decoration: none; transition: 0.3s;
-        }
-        .photo-btn:hover { background: var(--primary-color); color: #000; }
-
-        /* Slider */
-        .slider-wrapper { position: relative; max-width: 700px; margin: 0 auto; overflow: hidden; border-radius: 15px; background: var(--card-bg); }
-        .slides-container { display: flex; transition: transform 0.6s ease; }
-        .slides-container img { width: 100%; flex-shrink: 0; cursor: pointer; object-fit: contain; }
-
-        /* Lightbox */
-        #lightbox {
-            display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); justify-content: center; align-items: center; flex-direction: column;
-        }
-        #lightbox img { max-width: 90%; max-height: 75%; border-radius: 5px; }
-        .lightbox-close { position: absolute; top: 20px; right: 30px; font-size: 40px; color: white; cursor: pointer; }
-
-        .btn {
-            display: inline-block; padding: 12px 30px; background: var(--primary-color);
-            color: #000; text-decoration: none; border-radius: 50px;
-            font-weight: 700; margin-top: 30px; border: none; cursor: pointer; transition: 0.3s;
-        }
-        
-        footer { text-align: center; padding: 50px; opacity: 0.5; font-size: 0.9rem; }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div class="logo">Imtiaj.</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#achievements">Certificates</a></li>
-            <li><a href="#projects">Projects</a></li>
-        </ul>
-        <div class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></div>
-    </nav>
-
-    <section id="home">
-        <img src="https://lh3.googleusercontent.com/d/13BwaCC-GRBIpul4pRcKBIpyLXNo2IVlR" alt="Imtiaj Ahmed" class="profile-img">
-        <h1>Imtiaj Ahmed</h1>
-        <div class="typewriter" id="typewriter"></div>
-        <div class="social-links">
-            <a href="https://www.facebook.com/imtiajahmed007" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.github.com/imtiaj007" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/imtiajahmed007" target="_blank"><i class="fab fa-linkedin"></i></a>
-        </div>
-        <a href="https://drive.google.com/file/d/1z16Y7XY9GD3doOA4WMEUNBRiwfzDm3bM/view?usp=sharing" class="btn" target="_blank">Download CV</a>
-    </section>
-
-    <section id="education">
-        <h2>Education</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-university" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                <h3>BSc in CSE</h3>
-                <p>Southeast University</p>
-                <p>7th Semester | <strong>CGPA: ***</strong></p>
-            </div>
-            <div class="card">
-                <i class="fas fa-school" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                <h3>HSC (Science)</h3>
-                <p>Government Yasin College</p>
-                <p>GPA: <strong>***</strong></p>
-            </div>
-            <div class="card">
-                <i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 15px;"></i>
-                <h3>SSC (Science)</h3>
-                <p>Rajbari Government High School</p>
-                <p>GPA: <strong>***</strong></p>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
-            <div class="card" style="padding: 15px;"><h3>C / C++</h3></div>
-            <div class="card" style="padding: 15px;"><h3>Java</h3></div>
-            <div class="card" style="padding: 15px;"><h3>Python</h3></div>
-            <div class="card" style="padding: 15px;"><h3>HTML & CSS</h3></div>
-        </div>
-        <div class="photo-btn-container">
-            <a href="https://imtiaj007.github.io/photography/" class="photo-btn" target="_blank"><i class="fas fa-camera"></i> Photography Portfolio</a>
-        </div>
-    </section>
-
-    <section id="achievements">
-        <h2>Certificates & Achievements</h2>
-        <div class="slider-wrapper" id="slider-wrapper">
-            <div class="slides-container" id="cert-slider">
-                 <img src="Cert1.png" alt="Cert 1" onclick="openLightbox(0)">
-                 <img src="cert2.jpeg" alt="Cert 2" onclick="openLightbox(1)">
-                 <img src="cert3.jpeg" alt="Cert 3" onclick="openLightbox(2)">
-                 <img src="https://i.postimg.cc/RFrLbJz4/depositphotos-57477791-stock-illustration-loading-bar-with-a-doodle.webp" alt="Cert 2" onclick="openLightbox(6)">
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2>Featured Projects</h2>
-        <div class="grid">
-            <div class="card">
-                <div>
-                    <i class="fas fa-wallet" style="font-size: 1.5rem; color: var(--primary-color);"></i>
-                    <h3>Expense Tracker</h3>
-                    <p>Managing daily finances with ease.</p>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/Imtiaj007/Expense-Tracker" target="_blank" class="github-link" title="GitHub Repository"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <i class="fas fa-pills" style="font-size: 1.5rem; color: var(--primary-color);"></i>
-                    <h3>Pharmacy Management</h3>
-                    <p>System for inventory and billing.</p>
-                </div>
-                <div class="project-links">
-                    <a href="https://i.postimg.cc/y8Fdyqx3/fd.jpg" target="_blank" class="github-link" title="GitHub Repository"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <div class="card">
-                <div>
-                    <i class="fas fa-calendar-alt" style="font-size: 1.5rem; color: var(--primary-color);"></i>
-                    <h3>Course Time Generator</h3>
-                    <p>Automatic scheduling without conflicts.</p>
-                </div>
-                <div class="project-links">
-                    <a href="https://i.postimg.cc/y8Fdyqx3/fd.jpg" target="_blank" class="github-link" title="GitHub Repository"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">×</span>
-        <img id="lightbox-img" src="">
-    </div>
-
-    <footer>
-        <p>© 2026 Imtiaj Ahmed | All Rights Reserved.</p>
-    </footer>
-
     <script>
-        // Typewriter logic
-        const textStr = "CSE Undergraduate | Web Developer | Instructor | Competitive Programmer";
-        let i = 0;
-        function type() {
-            if (i < textStr.length) {
-                document.getElementById("typewriter").innerHTML += textStr.charAt(i);
-                i++;
-                setTimeout(type, 50);
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberGreen: '#00ff66',
+                        cyberCyan: '#00f0ff',
+                        cyberRed: '#ff0055',
+                        cyberBg: '#040711',
+                        cyberPanel: 'rgba(10, 16, 30, 0.92)',
+                        cyberBorder: '#16233b'
+                    },
+                    fontFamily: {
+                        mono: ['VT323', 'Fira Code', 'Courier New', 'monospace']
+                    }
+                }
             }
         }
-        window.onload = type;
-
-        // Auto Slider Logic
-        let currentSlide = 0;
-        const slider = document.getElementById('cert-slider');
-        const sliderImages = slider.getElementsByTagName('img');
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % sliderImages.length;
-            slider.style.transform = `translateX(${-currentSlide * 100}%)`;
-        }, 3000);
-
-        // Lightbox
-        function openLightbox(index) {
-            document.getElementById('lightbox').style.display = 'flex';
-            document.getElementById('lightbox-img').src = sliderImages[index].src;
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        .scanlines {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0, 0, 0, 0.5) 50%,
+                rgba(0, 0, 0, 0.5)
+            );
+            background-size: 100% 4px;
         }
-        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+
+        .neon-glow-green {
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.25), inset 0 0 10px rgba(0, 255, 102, 0.1);
+        }
+
+        .neon-glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25), inset 0 0 10px rgba(0, 240, 255, 0.1);
+        }
+
+        .text-glow-green {
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.8);
+        }
+
+        .text-glow-cyan {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+        }
+
+        .blink-cursor::after {
+            content: '█';
+            animation: blink 0.8s infinite;
+            color: #00ff66;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #040711;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00ff66;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-cyberBg text-gray-200 font-mono antialiased relative overflow-x-hidden selection:bg-cyberGreen selection:text-black">
+
+    <!-- Matrix Background Canvas -->
+    <canvas id="matrixCanvas" class="fixed top-0 left-0 w-full h-full -z-20 opacity-20 pointer-events-none"></canvas>
+
+    <!-- Scanline Grid -->
+    <div class="fixed top-0 left-0 w-full h-full scanlines -z-10 pointer-events-none"></div>
+
+    <!-- HUD Header Bar -->
+    <header class="fixed top-0 w-full bg-cyberBg/90 backdrop-blur-md border-b border-cyberBorder z-50 px-6 py-3">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="inline-block w-2.5 h-2.5 bg-cyberGreen rounded-full animate-ping"></span>
+                <span class="text-cyberGreen font-bold text-lg text-glow-green">[EMTIUJ_SEC_OS v3.8]</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-6 text-sm tracking-wider">
+                <button onclick="switchTab('profile')" class="hover:text-cyberGreen transition-colors text-cyberCyan">// 01_PROFILE</button>
+                <button onclick="switchTab('skills')" class="hover:text-cyberGreen transition-colors text-cyberCyan">// 02_ARSENAL</button>
+                <button onclick="switchTab('projects')" class="hover:text-cyberGreen transition-colors text-cyberCyan">// 03_PROJECTS</button>
+                <button onclick="switchTab('achievements')" class="hover:text-cyberGreen transition-colors text-cyberCyan">// 04_RECORDS</button>
+                <!-- Direct Link to Real Photography Site -->
+                <a href="https://imtiaj007.github.io/photography/" target="_blank" class="hover:text-cyberGreen transition-colors text-cyberCyan font-bold">// 05_GALLERY ↗</a>
+                <button onclick="switchTab('comms')" class="hover:text-cyberGreen transition-colors text-cyberCyan">// 06_COMMS</button>
+            </nav>
+
+            <div class="text-xs text-cyberGreen border border-cyberGreen/40 px-2 py-1 rounded bg-cyberGreen/10">
+                STATUS: ONLINE
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto pt-24 pb-16 px-4">
+
+        <!-- Terminal Main Window -->
+        <section class="bg-cyberPanel border-2 border-cyberGreen rounded-lg overflow-hidden neon-glow-green mb-8">
+            <div class="bg-cyberBorder px-4 py-2 flex items-center justify-between border-b border-cyberGreen/30">
+                <div class="flex items-center space-x-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                    <span class="text-xs text-gray-400 font-bold ml-2">emtiuj@seu-cyber-lab:~</span>
+                </div>
+                <div class="text-xs text-cyberGreen">SYSTEM_SECURE_NODE</div>
+            </div>
+
+            <div class="p-6 md:p-8 space-y-4">
+                <div class="text-xs text-cyberCyan flex items-center space-x-2">
+                    <i class="fa-solid fa-terminal"></i>
+                    <span>EXECUTE: ./init_profile.sh --name "Md. Emtiuj Ahmed"</span>
+                </div>
+
+                <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-wide">
+                    MD. <span class="text-cyberGreen text-glow-green">EMTIUJ</span> AHMED
+                </h1>
+
+                <p class="text-cyberCyan text-base md:text-lg font-semibold">
+                    Certified Penetration Testing Engineer (Mile2 C)PTE) • CSE Undergraduate • Visual Storyteller
+                </p>
+
+                <p class="text-gray-300 text-sm leading-relaxed border-l-2 border-cyberGreen pl-4 py-1">
+                    Specialized in offensive security assessments, database normalization, native Android development, and local AI integration. Active leader at Southeast Computer Club and passionate photographer.
+                </p>
+
+                <div class="pt-2 text-sm md:text-base text-cyberGreen">
+                    <span class="text-cyberRed">emtiuj@system:~$</span> <span id="typewriter" class="blink-cursor"></span>
+                </div>
+
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <button onclick="switchTab('projects')" class="bg-cyberGreen/10 border border-cyberGreen text-cyberGreen hover:bg-cyberGreen hover:text-black font-bold px-6 py-2 rounded transition-all text-sm tracking-wider uppercase">
+                        [ Explore Repositories ]
+                    </button>
+                    <!-- Direct External Link -->
+                    <a href="https://imtiaj007.github.io/photography/" target="_blank" class="bg-cyberCyan/10 border border-cyberCyan text-cyberCyan hover:bg-cyberCyan hover:text-black font-bold px-6 py-2 rounded transition-all text-sm tracking-wider uppercase flex items-center space-x-2">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>[ Open Photography Site ↗ ]</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scrollable Content Layout -->
+        <div class="max-h-[75vh] overflow-y-auto pr-2">
+
+            <!-- TAB 1: Profile & Academic Info -->
+            <div id="tab-profile" class="tab-content space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-cyberPanel border border-cyberBorder p-6 rounded-lg neon-glow-cyan md:col-span-2">
+                        <h2 class="text-xl font-bold text-cyberCyan mb-4 flex items-center">
+                            <i class="fa-solid fa-graduation-cap mr-3 text-cyberGreen"></i> ACADEMIC BACKGROUND
+                        </h2>
+                        <div class="space-y-4">
+                            <div class="border-l-2 border-cyberCyan pl-4">
+                                <h3 class="text-white font-bold text-lg">B.Sc in Computer Science & Engineering</h3>
+                                <p class="text-sm text-cyberGreen">Southeast University | Dhaka, Bangladesh (2024 – Present)</p>
+                                <p class="text-xs text-gray-400 mt-1">CGPA: 3.58 / 4.00 | Completed Credits: 88+</p>
+                            </div>
+                            <div class="border-l-2 border-cyberBorder pl-4">
+                                <h3 class="text-white font-bold text-sm">Higher Secondary Certificate (HSC)</h3>
+                                <p class="text-xs text-gray-400">Government Yasin College, Faridpur | GPA: 4.68 / 5.00 (Science)</p>
+                            </div>
+                            <div class="border-l-2 border-cyberBorder pl-4">
+                                <h3 class="text-white font-bold text-sm">Secondary School Certificate (SSC)</h3>
+                                <p class="text-xs text-gray-400">Rajbari Government High School | GPA: 4.73 / 5.00 (Science)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-cyberPanel border border-cyberBorder p-6 rounded-lg space-y-4">
+                        <h2 class="text-xl font-bold text-cyberGreen flex items-center">
+                            <i class="fa-solid fa-user-shield mr-2"></i> ORGANIZATIONAL ROLES
+                        </h2>
+                        <div class="text-xs space-y-3 text-gray-300">
+                            <div class="p-3 border border-cyberBorder rounded bg-black/40">
+                                <span class="text-cyberGreen font-bold">Southeast Computer Club</span>
+                                <p class="text-gray-400 mt-1">Head of Media & Head of Public Relation (2024–Present)</p>
+                            </div>
+                            <div class="p-3 border border-cyberBorder rounded bg-black/40">
+                                <span class="text-cyberCyan font-bold">Bangladesh Math Olympiad</span>
+                                <p class="text-gray-400 mt-1">Event Management Team Member (2019–Present)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: Skills Arsenal -->
+            <div id="tab-skills" class="tab-content hidden space-y-6">
+                <h2 class="text-xl font-bold text-cyberGreen flex items-center">
+                    <i class="fa-solid fa-microchip mr-3 text-cyberCyan"></i> TECHNICAL SKILLS MATRIX
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-cyberPanel border border-cyberGreen/50 p-6 rounded-lg neon-glow-green">
+                        <i class="fa-solid fa-shield-halved text-cyberGreen text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-white mb-2">Cybersecurity</h3>
+                        <ul class="text-xs space-y-2 text-gray-300">
+                            <li>▶ Certified Penetration Testing Engineer (Mile2 C)PTE)</li>
+                            <li>▶ Network Vulnerability Scanning & Analysis</li>
+                            <li>▶ System Hardening & Linux Administration</li>
+                            <li>▶ Web Security Audit (OWASP Standards)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-cyberPanel border border-cyberCyan/50 p-6 rounded-lg neon-glow-cyan">
+                        <i class="fa-solid fa-code text-cyberCyan text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-white mb-2">Development & Core</h3>
+                        <ul class="text-xs space-y-2 text-gray-300">
+                            <li>▶ Python, C, C++, Java, Kotlin</li>
+                            <li>▶ Database Normalization (3NF) & MySQL</li>
+                            <li>▶ Web Technologies (HTML, CSS, JS, PHP)</li>
+                            <li>▶ Native Android Speech Integration</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-cyberPanel border border-cyberBorder p-6 rounded-lg">
+                        <i class="fa-solid fa-server text-yellow-400 text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-white mb-2">AI & Infrastructure</h3>
+                        <ul class="text-xs space-y-2 text-gray-300">
+                            <li>▶ Local LLM Hosting (GGUF / Llamafile)</li>
+                            <li>▶ Git & GitHub Deployment Pipelines</li>
+                            <li>▶ Web Operations & Technical Writing</li>
+                            <li>▶ IT Troubleshooting & System Testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: Dynamic GitHub Projects -->
+            <div id="tab-projects" class="tab-content hidden space-y-6">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-cyberCyan flex items-center">
+                        <i class="fa-brands fa-github mr-3 text-cyberGreen"></i> DYNAMIC GITHUB REPOSITORIES
+                    </h2>
+                    <span class="text-xs text-cyberGreen border border-cyberGreen/40 px-2 py-1 rounded">AUTO-FETCHING ACTIVE REPOS</span>
+                </div>
+
+                <div id="github-repos-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="col-span-2 text-center text-cyberCyan py-8">
+                        <i class="fa-solid fa-spinner animate-spin text-2xl mb-2"></i>
+                        <p class="text-xs">Syncing GitHub Repositories from https://github.com/Imtiaj007 ...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: Achievements & Certificate -->
+            <div id="tab-achievements" class="tab-content hidden space-y-6">
+                <h2 class="text-xl font-bold text-cyberGreen flex items-center">
+                    <i class="fa-solid fa-trophy mr-3 text-yellow-400"></i> HONORS & CERTIFICATIONS
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Mile2 Certificate Card -->
+                    <div class="bg-cyberPanel border-2 border-cyberGreen p-6 rounded-lg neon-glow-green space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs text-cyberGreen font-bold border border-cyberGreen px-2 py-0.5 rounded">MILE2 CERTIFIED</span>
+                            <span class="text-xs text-gray-400">Valid: 2026 – 2029</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Mile2 C)PTE: Certified Penetration Testing Engineer</h3>
+                            <p class="text-xs text-cyberCyan mt-1">Certificate ID: <span class="font-bold text-white tracking-widest">30030-178-102-1823</span></p>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            Officially credentialed in penetration testing methodology, vulnerability discovery, network protocol exploitation, and defensive auditing.
+                        </p>
+                        <div class="pt-2">
+                            <a href="https://mile2.com/certificate-verification/" target="_blank" class="inline-flex items-center space-x-2 bg-cyberGreen text-black font-bold px-5 py-2.5 rounded hover:bg-white transition-all text-xs uppercase">
+                                <i class="fa-solid fa-shield-check text-sm"></i>
+                                <span>[ 1-Click Verify ID: 30030-178-102-1823 ]</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Photography Exhibition Card -->
+                    <div class="bg-cyberPanel border-2 border-cyberCyan p-6 rounded-lg neon-glow-cyan space-y-4">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs text-cyberCyan font-bold border border-cyberCyan px-2 py-0.5 rounded">VISUAL ARTS</span>
+                            <i class="fa-solid fa-camera text-cyberCyan text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Photography Portfolio Site</h3>
+                            <p class="text-xs text-gray-400 mt-1">Daffodil & NSU Photography Challenge Exhibitor (2023)</p>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed">
+                            Visual storytelling through street photography, portraits, and creative perspectives.
+                        </p>
+                        <div class="pt-2">
+                            <a href="https://imtiaj007.github.io/photography/" target="_blank" class="inline-flex items-center space-x-2 bg-cyberCyan text-black font-bold px-5 py-2.5 rounded hover:bg-white transition-all text-xs uppercase">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                                <span>[ Open Photography Site ↗ ]</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Math Olympiad Award -->
+                    <div class="bg-cyberPanel border border-yellow-400/50 p-6 rounded-lg space-y-3">
+                        <div class="text-xs text-yellow-400 font-bold">EVENT MANAGEMENT AWARD</div>
+                        <h3 class="text-lg font-bold text-white">Best Event Management Award (2022)</h3>
+                        <p class="text-xs text-gray-400">Recognized by Bangladesh Math Olympiad committee for outstanding management and event coordination.</p>
+                    </div>
+
+                    <!-- DU ICE Competition -->
+                    <div class="bg-cyberPanel border border-cyberBorder p-6 rounded-lg space-y-3">
+                        <div class="text-xs text-gray-400 font-bold">INNOVATION COMPETITION</div>
+                        <h3 class="text-lg font-bold text-white">DU ICE Center Idea Competition 2026</h3>
+                        <p class="text-xs text-gray-400">Submitted startup technology service proposal for Batch 01 at the University of Dhaka ICE Center.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: Comms & Links -->
+            <div id="tab-comms" class="tab-content hidden space-y-6">
+                <div class="bg-cyberPanel border border-cyberGreen p-8 rounded-lg neon-glow-green max-w-2xl mx-auto text-center space-y-6">
+                    <i class="fa-solid fa-satellite text-cyberGreen text-4xl"></i>
+                    <h2 class="text-2xl font-bold text-white">ESTABLISH ENCRYPTED LINK</h2>
+                    <p class="text-xs text-gray-300">
+                        Available for Cybersecurity Audits, Backend AI Development, Web Operations, or IT Support Roles.
+                    </p>
+                    
+                    <div class="text-sm space-y-2 text-cyberCyan">
+                        <p><i class="fa-solid fa-envelope text-cyberGreen mr-2"></i> imtiajahmed62pa@gmail.com</p>
+                        <p><i class="fa-solid fa-phone text-cyberGreen mr-2"></i> +880 1627-280262</p>
+                        <p><i class="fa-solid fa-location-dot text-cyberGreen mr-2"></i> Banasree, Rampura, Dhaka, Bangladesh</p>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="mailto:imtiajahmed62pa@gmail.com" class="inline-block bg-cyberGreen text-black font-bold px-8 py-3 rounded hover:bg-white transition-all text-sm uppercase">
+                            [ Direct Transmission ]
+                        </a>
+                    </div>
+
+                    <div class="flex justify-center space-x-6 text-2xl text-cyberCyan pt-4">
+                        <a href="https://www.linkedin.com/in/imtiajahmed007" target="_blank" class="hover:text-cyberGreen transition-colors" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/Imtiaj007" target="_blank" class="hover:text-cyberGreen transition-colors" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://imtiaj007.github.io/photography/" target="_blank" class="hover:text-cyberGreen transition-colors" title="Photography Portfolio"><i class="fa-solid fa-camera"></i></a>
+                        <a href="mailto:imtiajahmed62pa@gmail.com" class="hover:text-cyberGreen transition-colors" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const chars = '01010101_EMTIUJ_CPTE_SECURITY_PHOTOGRAPHY_SEU';
+        const fontSize = 14;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = Array(columns).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(4, 7, 17, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ff66';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 35);
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+        }
+
+        const phrases = [
+            "nmap -sV -sC -p- target.local",
+            "certutil -verify Mile2_CPTE_30030-178-102-1823.crt",
+            "python3 -m llamafile --model mistral-7b.gguf",
+            "open https://imtiaj007.github.io/photography/",
+            "system verified & operational."
+        ];
+        let pIndex = 0;
+        let cIndex = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById('typewriter');
+
+        function typeLoop() {
+            const currentPhrase = phrases[pIndex];
+            if (isDeleting) {
+                typewriterEl.textContent = currentPhrase.substring(0, cIndex--);
+            } else {
+                typewriterEl.textContent = currentPhrase.substring(0, cIndex++);
+            }
+
+            if (!isDeleting && cIndex === currentPhrase.length + 1) {
+                isDeleting = true;
+                setTimeout(typeLoop, 1600);
+            } else if (isDeleting && cIndex === 0) {
+                isDeleting = false;
+                pIndex = (pIndex + 1) % phrases.length;
+                setTimeout(typeLoop, 400);
+            } else {
+                setTimeout(typeLoop, isDeleting ? 30 : 70);
+            }
+        }
+        typeLoop();
+
+        async function fetchGitHubRepos() {
+            const container = document.getElementById('github-repos-container');
+            const username = 'Imtiaj007';
+
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=10`);
+                if (!response.ok) throw new Error('Failed to load GitHub data');
+
+                const repos = await response.json();
+                container.innerHTML = '';
+
+                if (repos.length === 0) {
+                    container.innerHTML = '<div class="col-span-2 text-center text-gray-400 text-xs">No public repositories found.</div>';
+                    return;
+                }
+
+                repos.forEach(repo => {
+                    const repoCard = `
+                        <div class="bg-cyberPanel border border-cyberBorder hover:border-cyberGreen p-5 rounded-lg transition-all group space-y-3">
+                            <div class="flex justify-between items-start">
+                                <span class="text-xs text-cyberGreen font-bold border border-cyberGreen px-2 py-0.5 rounded uppercase">
+                                    ${repo.language || 'Code / Script'}
+                                </span>
+                                <a href="${repo.html_url}" target="_blank" class="text-gray-400 group-hover:text-cyberGreen text-lg">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-cyberGreen transition-colors">
+                                ${repo.name}
+                            </h3>
+                            <p class="text-xs text-gray-400 leading-relaxed">
+                                ${repo.description || 'No description provided for this repository.'}
+                            </p>
+                            <div class="flex justify-between items-center text-xs text-cyberCyan pt-2 border-t border-cyberBorder/50">
+                                <span><i class="fa-regular fa-star mr-1"></i> ${repo.stargazers_count} Stars</span>
+                                <span><i class="fa-solid fa-code-fork mr-1"></i> ${repo.forks_count} Forks</span>
+                                <a href="${repo.html_url}" target="_blank" class="text-cyberGreen underline font-semibold">View Repo →</a>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += repoCard;
+                });
+            } catch (error) {
+                container.innerHTML = `
+                    <div class="col-span-2 border border-cyberRed/50 p-4 rounded text-center text-xs text-cyberRed">
+                        Unable to auto-fetch repositories right now. Direct link: 
+                        <a href="https://github.com/Imtiaj007" target="_blank" class="underline text-white font-bold ml-1">github.com/Imtiaj007</a>
+                    </div>
+                `;
+            }
+        }
+
+        fetchGitHubRepos();
     </script>
 </body>
 </html>
